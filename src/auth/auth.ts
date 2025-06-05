@@ -2,7 +2,7 @@ import { RequestHandler, Router, Request, Response } from "express";
 import { validateBody } from "../middleware/validateBody";
 import {} from "../schemas/book.schema";
 import z from "zod";
-import { db } from "..";
+
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import { eq } from "drizzle-orm";
@@ -10,6 +10,7 @@ import { users } from "../schemas/schema";
 import jwt, { JsonWebTokenError } from "jsonwebtoken";
 import { userSchema } from "../schemas/user.schema";
 import { IGetUserAuthInfoRequest } from "../types/express";
+import { db } from "../db";
 
 const auth = Router();
 

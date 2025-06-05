@@ -2,7 +2,7 @@ import { Router } from "express";
 import { IGetUserAuthInfoRequest } from "../types/express";
 import { and, ilike } from "drizzle-orm";
 import { books } from "../schemas/schema";
-import { db } from "..";
+import { db } from "../db";
 
 const r = Router();
 
@@ -29,11 +29,9 @@ r.get("/search", async (req: IGetUserAuthInfoRequest, res) => {
     }
 
     if (!author && !title) {
-      res
-        .status(400)
-        .json({
-          error: "Bad request, use 'author' or 'title' as search params",
-        });
+      res.status(400).json({
+        error: "Bad request, use 'author' or 'title' as search params",
+      });
     }
 
     const results = await db

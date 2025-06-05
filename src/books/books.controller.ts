@@ -1,22 +1,22 @@
 import { bookGenres, books, reviews } from "../schemas/schema";
 import {
   UUIDSchema,
-  bookSchema,
   createBookSchema,
   filterSchema,
 } from "../schemas/book.schema";
 import { v4 as uuidv4 } from "uuid";
 import z from "zod";
-import { db } from "..";
 import { reviewSchema } from "../schemas/review.schema";
 import { Response } from "express";
 import { IGetUserAuthInfoRequest } from "../types/express";
-import { eq, and, sql, inArray } from "drizzle-orm"; // Add this import (adjust the path if needed)
+import { eq, and, sql, inArray } from "drizzle-orm";
+import { db } from "../db";
 
 export const createBook = async (
   req: IGetUserAuthInfoRequest,
   res: Response
 ) => {
+  // validateBody middleare already validated the data
   const newBook = req.body as z.infer<typeof createBookSchema>;
 
   const insertedBook = await db
@@ -68,7 +68,7 @@ export const createReview = async (
     return;
   }
 
-  // Validate and extract review data
+  // Validated by validateBody middlewaew and extract review data
   const review = req.body as z.infer<typeof reviewSchema.complete>;
 
   const result = await db
@@ -121,7 +121,6 @@ export const getBooks = async (req: IGetUserAuthInfoRequest, res: Response) => {
   // Offset will be used in returing the number of rows
   const offset = (page - 1) * limit;
   const conditions = [];
-  const genreConditions = [];
   const authorCondition = [];
 
   // Check for genre
@@ -171,7 +170,7 @@ export const getBooks = async (req: IGetUserAuthInfoRequest, res: Response) => {
 
   res.status(200).json({
     status: "success",
-    books: booksWithGenres,
+    data: booksWithGenres,
   });
 };
 
