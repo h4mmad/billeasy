@@ -1,11 +1,11 @@
 import { Response } from "express";
 import { reviewSchema } from "../schemas/review.schema";
 import { UUIDSchema } from "../schemas/book.schema";
-import { db } from "..";
 import { reviews } from "../schemas/schema";
 import z from "zod";
 import { and, eq, ne } from "drizzle-orm";
 import { IGetUserAuthInfoRequest } from "../types/express";
+import { db } from "../db";
 
 export const updateReview = async (
   req: IGetUserAuthInfoRequest,
