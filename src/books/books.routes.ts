@@ -9,19 +9,24 @@ import {
 } from "./books.controller";
 import { asyncHandler } from "../utils/asyncHandler";
 import { reviewSchema } from "../schemas/review.schema";
+import { checkAuth } from "../auth/auth";
 
 const r = Router();
 
-// Create book
+// Add a new book
+// (Authenticated users only, checkAuth middleware)
 r.post(
   "/books",
+  checkAuth,
   validateBody(bookSchema.omit({ id: true })),
   asyncHandler(createBook)
 );
 
 // Create a review for a book
+// Only authenticated users
 r.post(
   "/books/:id/reviews",
+  checkAuth,
   validateBody(reviewSchema.create),
   asyncHandler(createReview)
 );
@@ -32,7 +37,6 @@ r.get("/books", getBooks);
 // GET /books/:id – Get book details by ID, including:
 // Average rating
 // Reviews (with pagination)
-
 r.get("/books/:id", getBookById);
 
 export const BooksRouter = r;

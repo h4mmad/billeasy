@@ -1,4 +1,4 @@
-import { bookGenres, books, reviews } from "../schemas/schema";
+import { bookGenres, books, reviews } from "../db/dbSchema";
 import {
   UUIDSchema,
   createBookSchema,
@@ -10,7 +10,7 @@ import { reviewSchema } from "../schemas/review.schema";
 import { Response } from "express";
 import { IGetUserAuthInfoRequest } from "../types/express";
 import { eq, and, sql, inArray } from "drizzle-orm";
-import { db } from "../db";
+import { db } from "../db/db";
 
 export const createBook = async (
   req: IGetUserAuthInfoRequest,

@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { IGetUserAuthInfoRequest } from "../types/express";
 import { and, ilike } from "drizzle-orm";
-import { books } from "../schemas/schema";
-import { db } from "../db";
+import { books } from "../db/dbSchema";
+import { db } from "../db/db";
 
 const r = Router();
 

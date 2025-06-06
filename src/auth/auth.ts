@@ -6,11 +6,11 @@ import z from "zod";
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import { eq } from "drizzle-orm";
-import { users } from "../schemas/schema";
+import { users } from "../db/dbSchema";
 import jwt, { JsonWebTokenError } from "jsonwebtoken";
 import { userSchema } from "../schemas/user.schema";
 import { IGetUserAuthInfoRequest } from "../types/express";
-import { db } from "../db";
+import { db } from "../db/db";
 
 const auth = Router();
 

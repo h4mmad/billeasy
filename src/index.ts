@@ -23,7 +23,6 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use(AuthRouter);
-app.use(checkAuth);
 app.use(BooksRouter);
 app.use(ReviewsRouter);
 app.use(Search);

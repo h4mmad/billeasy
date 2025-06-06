@@ -48,6 +48,7 @@ Postman: https://documenter.getpostman.com/view/20110000/2sB2x2KZvp#216c95fe-59d
 5. Ratings for books is a whole number 1 to 5 inclusive of both.
 6. Book genre is an enum used in application code rather than database, because if new genres need to be supported then only change it one place.
 7. Incoming request to create books are validated using Zod schemas. Genres are only allowed if they are part of enum.
+8. Authenticated users only are allowed one review per user per book, this is enforced at db level using unique constraint
 
 ## Relationships and schema
 
@@ -98,3 +99,5 @@ Postman: https://documenter.getpostman.com/view/20110000/2sB2x2KZvp#216c95fe-59d
 ### Todos
 
 - [ ] Set up custom error handler with Posgress specific codes (ex. 2305) and other
+
+- [ ] Write tests
