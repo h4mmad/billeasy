@@ -93,6 +93,8 @@ Postman: https://documenter.getpostman.com/view/20110000/2sB2x2KZvp#216c95fe-59d
 
 7. Assume rating given is whole number (ex. 4/5)
 
+8. Users are allowed to update and delete their own review for a book, this is checked using reviews.user_id and request.userId
+
 ### Todos
 
 - [ ] Set up custom error handler with Posgress specific codes (ex. 2305) and other
