@@ -78,7 +78,7 @@ Postman: https://documenter.getpostman.com/view/20110000/2sB2x2KZvp#216c95fe-59d
 1. `book_id` and `genre` are composite primary key.
 2. `book_id` is foreign key references `id` in `books` table has on delete cascade.
 
-### Design decisions
+#### things to do/think about
 
 1. Book genre will be an enum, because for filtering it'll be easier and will enforce consistency, use enum and fail fast.
 
@@ -93,6 +93,6 @@ Postman: https://documenter.getpostman.com/view/20110000/2sB2x2KZvp#216c95fe-59d
 
 7. Assume rating given is whole number (ex. 4/5)
 
-### Todo
+### Todos
 
 - [ ] Set up custom error handler with Posgress specific codes (ex. 2305) and other
